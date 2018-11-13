@@ -1,9 +1,9 @@
 #include "MKL46Z4.h"
 
-#define PIT_ENABLE_TIMER 			0x1
-#define PIT_INTERUPT_ENABLE		0x10
-#define PIT_TE_TIE_ENABLE			0x11
-#define PIT_MCR_FRZ						0x01
+#define PIT_ENABLE_TIMER 			0x1 //0b01
+#define PIT_INTERUPT_ENABLE		0x2 //0b10
+#define PIT_TE_TIE_ENABLE			0x3 //0b11
+#define PIT_MCR_FRZ						0x1 //0b01
 #define PIT_IPR_REGISTER      (PIT_IRQ_NUMBER >> 2)
 #define NVIC_IPR_PIT_MASK     (3 << (((PIT_IRQ_NUMBER & 3) << 3) + 6))
 #define PIT_IRQ_NUMBER 				22

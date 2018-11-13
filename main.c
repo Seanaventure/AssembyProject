@@ -27,3 +27,4 @@ int main(){
 	initPort(6, 0);
 	PTD->PSOR |= (1<<7);
 }
+

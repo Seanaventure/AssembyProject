@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\lightSwitcher.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\lightSwitcher.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Mon Nov 12 13:29:17 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Tue Nov 13 00:00:25 2018
 <BR><P>
 <H3>Maximum Stack Usage =         28 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -47,7 +47,7 @@ Function Pointers
  <LI><a href="#[11]">LVD_LVW_IRQHandler</a> from startup_mkl46z4.o(.text) referenced from startup_mkl46z4.o(RESET)
  <LI><a href="#[26]">MCG_IRQHandler</a> from startup_mkl46z4.o(.text) referenced from startup_mkl46z4.o(RESET)
  <LI><a href="#[6]">NMI_Handler</a> from startup_mkl46z4.o(.text) referenced from startup_mkl46z4.o(RESET)
- <LI><a href="#[21]">PIT_IRQHandler</a> from startup_mkl46z4.o(.text) referenced from startup_mkl46z4.o(RESET)
+ <LI><a href="#[21]">PIT_IRQHandler</a> from pittimer.o(i.PIT_IRQHandler) referenced from startup_mkl46z4.o(RESET)
  <LI><a href="#[29]">PORTA_IRQHandler</a> from startup_mkl46z4.o(.text) referenced from startup_mkl46z4.o(RESET)
  <LI><a href="#[2a]">PORTC_PORTD_IRQHandler</a> from startup_mkl46z4.o(.text) referenced from startup_mkl46z4.o(RESET)
  <LI><a href="#[9]">PendSV_Handler</a> from startup_mkl46z4.o(.text) referenced from startup_mkl46z4.o(RESET)
@@ -292,9 +292,6 @@ Global Symbols
 <P><STRONG><a name="[26]"></a>MCG_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_mkl46z4.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_mkl46z4.o(RESET)
 </UL>
-<P><STRONG><a name="[21]"></a>PIT_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_mkl46z4.o(.text))
-<BR>[Address Reference Count : 1]<UL><LI> startup_mkl46z4.o(RESET)
-</UL>
 <P><STRONG><a name="[29]"></a>PORTA_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_mkl46z4.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_mkl46z4.o(RESET)
 </UL>
@@ -386,7 +383,10 @@ Global Symbols
 
 <P><STRONG><a name="[6e]"></a>__use_no_semihosting_swi</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[6f]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, indicate_semi.o(.text), UNUSED)
+<P><STRONG><a name="[21]"></a>PIT_IRQHandler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, pittimer.o(i.PIT_IRQHandler))
+<BR>[Address Reference Count : 1]<UL><LI> startup_mkl46z4.o(RESET)
+</UL>
+<P><STRONG><a name="[6f]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, indicate_semi.o(.text), UNUSED)
 
 <P><STRONG><a name="[2b]"></a>SystemInit</STRONG> (Thumb, 180 bytes, Stack size 0 bytes, system_mkl46z4.o(i.SystemInit))
 <BR>[Address Reference Count : 1]<UL><LI> startup_mkl46z4.o(.text)

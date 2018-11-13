@@ -10,13 +10,13 @@ void initPIT(uint8_t timer){
 	First we need to enable disable timer incase its already enabled, then we need to do NVIC
 	Specifally, we need to set Priority, clear any current (ICPR), and pending interuppts (ISPR)
 */
-	SIM->SCGC6 |= SIM_SCGC6_PIT_MASK; //Enable the clock
-	PIT->CHANNEL[timer].TCTRL &= ~PIT_ENABLE_TIMER; //Enable the specific timer
-	NVIC->IP[PIT_IPR_REGISTER] &= NVIC_IPR_PIT_MASK;//Set the priority
-	NVIC->ICPR[0] = NVIC_ICPR_PIT_MASK;						 //Clear pending interrupts
-	NVIC->ISER[0] = NVIC_ISER_PIT_MASK;						 //Enable PIT interrupt
-	PIT->MCR = PIT_MCR_FRZ;
-	PIT->CHANNEL[timer].TCTRL = PIT_INTERUPT_ENABLE; //Not going to enable the actual timer at this time. Just the interupt
+		SIM->SCGC6 |= SIM_SCGC6_PIT_MASK;                 //Enable the clock
+		PIT->CHANNEL[timer].TCTRL &= ~PIT_ENABLE_TIMER;
+		NVIC->IP[PIT_IPR_REGISTER] &= NVIC_IPR_PIT_MASK;  //Set the priority
+		NVIC->ICPR[0] = NVIC_ICPR_PIT_MASK;						    //Clear pending interrupts
+		NVIC->ISER[0] = NVIC_ISER_PIT_MASK;						    //Enable PIT interrupt
+		PIT->MCR=PIT_MCR_FRZ;
+		PIT->CHANNEL[timer].TCTRL = PIT_INTERUPT_ENABLE; //Not going to enable the actual timer at this time. Just the interupt
 }
 
 void wait(uint8_t timer, int ms){
