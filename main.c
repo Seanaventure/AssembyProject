@@ -1,30 +1,14 @@
 #include "PinDriver.h"
-
-
-/**
-Initializes a GPIO pin in port D
-*/
-void initPort(int ledNum, int inout){
-	SIM->SCGC5 |= SIM_SCGC5_PORTD_MASK;
-	PORTD->PCR[ledNum] = PORT_PCR_MUX(1u);
-	PTD->PDDR |= (inout << ledNum);
+#define  LEDTravelTime 500
+#define  NumLED        11
+void initPins(int leds[], char port){
+		for (int i = 0; i < NumLED; i++){
+			enablePin(1, port, leds[i]);
+	}
 }
-
-/**
-Will toggle a pin on portd
-*/
-void togglePin(int pinNum){
-		PTD->PTOR |= (1u << pinNum);
-}
-
-/*
-Will read the digital value from a port on portD
-Return:
-Returns 1 if the pin is high, 0 if pin is low
-*/
 int main(){
-	enablePin(1, 'D', 7);
-	initPort(6, 0);
-	PTD->PSOR |= (1<<7);
+	//This array contains all the ports using the LEDs. All are port E
+	int ledPorts[] = {31,19,18,17,16,6,3,2,20,21,22};
+	initPins(ledPorts, 'E');
 }
 
