@@ -18,4 +18,4 @@
 void initPIT(uint8_t);
 void wait(uint8_t, int);
 void setTimer(uint8_t, int);
-void timerExpired(uint8_t);
+int timerExpired(uint8_t);

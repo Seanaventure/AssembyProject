@@ -61,11 +61,11 @@ __asm("CPSID   I");  /* mask interrupts */
 	
 }
 
-void timerExpired(uint8_t timer){
+int timerExpired(uint8_t timer){
 /*
 	This method will return a 1 of the given timer has expired. This is useful mainly for setTimer. I made this a method
 	instead of putting timerxexpired so that they are essentialy private variables and this is the getter.
 */
-	timer = 0;
+	return (timer = 1) ? timer1expired:timer2expired;
 	
 }

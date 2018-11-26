@@ -1746,11 +1746,11 @@ ARM Macro Assembler    Page 27 Program Title for Listing Header Goes Here
   863 00000130                 END
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0+ --apcs=inter
 work --depend=.\objects\programtemplate_c_start.d -o.\objects\programtemplate_c
-_start.o -I.\RTE\_Target_1 -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Inc
-lude -IC:\Keil_v5\ARM\PACK\Keil\Kinetis_KLxx_DFP\1.14.0\Device\Include --predef
-ine="__EVAL SETA 1" --predefine="__UVISION_VERSION SETA 524" --predefine="_RTE_
- SETA 1" --predefine="MKL46Z256xxx4 SETA 1" --list=.\listings\programtemplate_c
-_start.lst ProgramTemplate_C_Start.s
+_start.o -I.\RTE\_Target_1 -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include 
+-IC:\Keil_v5\ARM\PACK\Keil\Kinetis_KLxx_DFP\1.14.0\Device\Include --predefine="
+__EVAL SETA 1" --predefine="__UVISION_VERSION SETA 524" --predefine="_RTE_ SETA
+ 1" --predefine="MKL46Z256xxx4 SETA 1" --list=.\listings\programtemplate_c_star
+t.lst ProgramTemplate_C_Start.s
 
 
 
