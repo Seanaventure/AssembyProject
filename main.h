@@ -8,6 +8,7 @@
 #define	 Hard					 200
 #define	 Easy					 400
 #define	 Extreme			 100
+#define  ULTRA_EXTREME 10
 #define  Button				 23
 #define  targetLED		 6
 #define  MaxSize			 80

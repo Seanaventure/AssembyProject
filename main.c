@@ -10,6 +10,7 @@ boolean stageActivated = True;
 boolean guessed = False;
 int ledPorts[] = {31,19,18,17,16,6,3,2,20,21,22};
 boolean buttonInput = True;
+int currentStage = 0;
 
 void introFlash(int delay){
 	for (int j = 0; j < 3; j++){
@@ -53,6 +54,8 @@ void GuessInitiated(int ledGuessed){
 				PutStringSB("That is correct! Advancing to next stage\r\n", MaxSize);
 				introFlash(introFlashLen);
 				stageActivated = False;
+				currentStage++;
+				score++;
 		}else{
 				PutStringSB("Incorrect :(, you have lost a life\r\n", MaxSize);
 				PutStringSB("Current Lives: ", MaxSize);
@@ -81,8 +84,8 @@ void initGame(){
 		PutStringSB("Press the button once the LED's match \r\n", MaxSize);
 	}
 	initPins(ledPorts, 'E', Button);
-	cascadeAnim(100, True);
-	cascadeAnim(100, False);
+	cascadeAnim(50, True);
+	cascadeAnim(50, False);
 	wait(0, 200);
 	introFlash(introFlashLen);
 	turnOn('E', targetLED);
@@ -94,11 +97,11 @@ int main(){
 	int ledIndex = 0;
 	boolean reverse = False;
 	int waittime = 0;
-	for (int i = 0; i < 4; i++){
+	while (currentStage <= 4 && lives != 0){
 		turnOn('E', targetLED);
 		PutStringSB("Current stage: ", MaxSize);
 		stageActivated = True;
-		switch(i){
+		switch(currentStage){
 			case 0:
 				waittime = Easy;
 				PutStringSB("Easy\r\n", MaxSize);
@@ -115,6 +118,9 @@ int main(){
 				waittime = Extreme;
 				PutStringSB("EXTREME\r\n", MaxSize);
 				break;
+			case 4:
+				waittime = ULTRA_EXTREME;
+				PutStringSB("YOU HAVE ENTERED ULTRA EXTREME MODE\r\n", MaxSize);
 		}
 		PutStringSB("Your current score is: ", MaxSize);
 		PutNumUB(score);
@@ -161,5 +167,8 @@ int main(){
 			}
 		}	
 	}
+	PutStringSB("DDu Have Finished!\r\n", MaxSize);
+	wait(0, 100);
+	return 1;
 }
 

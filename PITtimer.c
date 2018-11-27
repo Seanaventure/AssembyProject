@@ -37,8 +37,7 @@ void setTimer(uint8_t timer, int ms){
 	This will simply set the timer to a certain value. This method is useful for when the user wants to start a timer
 	and do other stuff while they wait for it to go off. They can check if it went off by looking at timerExpired.
 */
-	ms = ms/100;
-	ms = ms * 2400000;
+	ms = (ms * 2400000)/100;
 	ms = ms - 1;
   PIT->CHANNEL[timer].LDVAL = ms;
 	PIT->CHANNEL[timer].TCTRL = PIT_TCTRL_CH_IE;
