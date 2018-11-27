@@ -1,9 +1,11 @@
 #include "PitTimer.h"
-
+/**
+This is the PIT module. It deals with setting up the PIT and doing timer stuff.
+*/
 //This is basially the boolean variable. When this is a 0 the wait() function should do an infinite loop until
 //its a 1
+uint8_t timer0expired = 0;
 uint8_t timer1expired = 0;
-uint8_t timer2expired = 0;
 
 void initPIT(uint8_t timer){
 /*
@@ -22,9 +24,7 @@ void initPIT(uint8_t timer){
 
 void wait(uint8_t timer, int ms){
 	setTimer(timer, ms);	
-	while(timer1expired != 0){
-	}
-  PIT->CHANNEL[0].TCTRL &= ~PIT_TCTRL_TEN_MASK;
+	while(((timer == 0) ? timer0expired : timer1expired) == 0);
  /*
 This method is similar to delay() in arduino. It is a blocking call that will stay in an infinite loop until a 
 certain amount of time has passed
@@ -44,7 +44,10 @@ void setTimer(uint8_t timer, int ms){
 	PIT->CHANNEL[timer].TCTRL = PIT_TCTRL_CH_IE;
 
 	//PIT->CHANNEL[0].TCTRL = PIT_TCTRL_TEN_MASK;
-	timer1expired = 1;
+	if (timer == 0)
+		timer0expired = 0;
+	else
+		timer1expired = 0;
 
 }
 
@@ -52,8 +55,8 @@ void PIT_IRQHandler(){
 /*
 	This is the ISR. All it should really do is set the timer expired value for the correct timer.
 */
-__asm("CPSID   I");  /* mask interrupts */
-	timer1expired = 0;
+	__asm("CPSID   I");  /* mask interrupts */
+	timer0expired = 1;
   /* clear PIT timer 0 interrupt flag */
   PIT->CHANNEL[0].TFLG = PIT_TFLG_TIF_MASK;
   __asm("CPSIE   I");  /* unmask interrupts */
@@ -61,11 +64,20 @@ __asm("CPSID   I");  /* mask interrupts */
 	
 }
 
-int timerExpired(uint8_t timer){
+int timerExpired(uint8_t timerNum){
 /*
 	This method will return a 1 of the given timer has expired. This is useful mainly for setTimer. I made this a method
 	instead of putting timerxexpired so that they are essentialy private variables and this is the getter.
 */
-	return (timer = 1) ? timer1expired:timer2expired;
-	
+	int result = (timerNum == 0) ? timer0expired : timer1expired;
+	if (result == 1){
+			PIT->CHANNEL[timerNum].TCTRL &= ~PIT_TCTRL_TEN_MASK;
+			if (timerNum == 0)
+				timer0expired = 0;
+			else
+				timer1expired = 0;
+			return 1;
+	}else{
+		return 0;
+	}
 }

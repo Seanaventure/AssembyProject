@@ -1,5 +1,7 @@
 #include "PinDriver.h"
-
+/**
+Code that runs the GPIO. Can set up pins to be inputs/outputs, and write/read to pins
+*/
 /**
 This function will enable a port for GPIO. Can enable ports A-E, pins 0-31
 */

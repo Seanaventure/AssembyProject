@@ -406,14 +406,19 @@
               <FilePath>.\PitTimer.h</FilePath>
             </File>
             <File>
-              <FileName>ProgramTemplate_C_Start.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>.\ProgramTemplate_C_Start.s</FilePath>
-            </File>
-            <File>
               <FileName>Exercise11_C.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Exercise11_C.h</FilePath>
+            </File>
+            <File>
+              <FileName>mixedAssembly.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\mixedAssembly.s</FilePath>
+            </File>
+            <File>
+              <FileName>HardFault_LCD.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\HardFault_LCD.s</FilePath>
             </File>
           </Files>
         </Group>

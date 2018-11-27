@@ -1,3 +1,7 @@
+
+/**
+This is the main header file for the PIT timer. 
+*/
 #include "MKL46Z4.h"
 
 #define PIT_ENABLE_TIMER 			0x1 //0b01
